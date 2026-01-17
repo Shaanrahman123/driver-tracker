@@ -46,4 +46,18 @@ db.exec(`
   );
 `);
 
+// Auto-seed admin if database is empty or admin is missing
+const adminEmail = 'admin@example.com';
+const adminExists = db.prepare('SELECT 1 FROM users WHERE email = ?').get(adminEmail);
+
+if (!adminExists) {
+  // admin123
+  const adminHash = '$2b$10$kM2spkP/Is5I3ZTPA7NWr.dy/v3xnvWahAixruN8JOYAdtyZ7eVvK';
+  // 9801540172
+  const driverHash = '$2b$10$vCVrzhIV3PUgExegBIoTu.cOqeaDgdtDRvil2x0BTQZQJkVJWjOqi';
+
+  db.prepare("INSERT OR IGNORE INTO users (name, email, password, role) VALUES (?, ?, ?, ?)").run('System Admin', 'admin@example.com', adminHash, 'admin');
+  db.prepare("INSERT OR IGNORE INTO users (name, email, phone, gender, password, role) VALUES (?, ?, ?, ?, ?, ?)").run('Shaan Rahman', 'driver@example.com', '9801540172', 'Male', driverHash, 'driver');
+}
+
 export default db;
