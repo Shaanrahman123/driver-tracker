@@ -11,20 +11,8 @@ export async function POST(request: Request) {
 
         const { latitude, longitude, address, image, type } = await request.json();
 
-        // Save image
-        let imageUrl = '';
-        if (image) {
-            const base64Data = image.replace(/^data:image\/\w+;base64,/, "");
-            const filename = `${Date.now()}_${session.user.id}.jpg`;
-            const uploadDir = path.join(process.cwd(), 'public', 'uploads');
-            if (!fs.existsSync(uploadDir)) {
-                fs.mkdirSync(uploadDir, { recursive: true });
-            }
-            const filePath = path.join(uploadDir, filename);
-
-            await fs.promises.writeFile(filePath, base64Data, 'base64');
-            imageUrl = `/uploads/${filename}`;
-        }
+        // Save image directly as base64 string to DB (avoids Read-Only FS on serverless)
+        const imageUrl = image || '';
 
         const date = new Date().toISOString().split('T')[0];
         const timestamp = Date.now();

@@ -63,13 +63,13 @@ export default function Home() {
                     </span>
                     Real-time Freight Intelligence
                   </div>
-                  <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1]">
+                  <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.1]">
                     Manage Your Trucking <br />
                     <span className="bg-linear-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
                       Fleet with Power.
                     </span>
                   </h1>
-                  <p className="mt-6 text-lg md:text-xl text-neutral-400 max-w-2xl leading-relaxed">
+                  <p className="mt-4 text-base md:text-xl text-neutral-400 max-w-2xl leading-relaxed">
                     The most advanced logistics and attendance system built specifically for heavy-duty trucking operations. Track locations, manage hauling logs, and optimize routes.
                   </p>
                   <div className="mt-10 flex flex-col sm:flex-row gap-4 sm:justify-center lg:justify-start">

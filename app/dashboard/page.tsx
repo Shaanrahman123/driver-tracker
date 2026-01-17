@@ -178,16 +178,13 @@ export default function Dashboard() {
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
-                                <div className="p-6 rounded-3xl bg-neutral-900/50 border border-white/5">
-                                    <p className="text-neutral-500 text-xs font-bold uppercase tracking-widest mb-1">Current Shift</p>
-                                    <p className="text-xl font-bold">Active</p>
+                                <div className="p-5 rounded-[2rem] bg-neutral-900/50 border border-white/5">
+                                    <div className="text-xs font-black text-neutral-500 uppercase tracking-widest mb-1">Today</div>
+                                    <div className="text-base md:text-xl font-bold">12 Jan</div>
                                 </div>
-                                <div className="p-6 rounded-3xl bg-neutral-900/50 border border-white/5">
-                                    <p className="text-neutral-500 text-xs font-bold uppercase tracking-widest mb-1">Status</p>
-                                    <span className="inline-flex items-center gap-1.5 text-indigo-400 text-sm font-bold">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
-                                        Online
-                                    </span>
+                                <div className="p-5 rounded-[2rem] bg-neutral-900/50 border border-white/5">
+                                    <div className="text-xs font-black text-neutral-500 uppercase tracking-widest mb-1">Status</div>
+                                    <div className="text-base md:text-xl font-bold text-green-400 italic">ON DUTY</div>
                                 </div>
                             </div>
                         </motion.div>
@@ -204,14 +201,13 @@ export default function Dashboard() {
                                 <video ref={videoRef} autoPlay playsInline className="w-full h-full object-cover scale-x-[-1]" />
                                 <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 
-                                <div className="absolute bottom-10 left-0 right-0 flex flex-col items-center">
+                                <div className="absolute bottom-6 left-0 right-0 flex flex-col items-center">
                                     <button
                                         onClick={capture}
-                                        className="w-20 h-20 rounded-full bg-white flex items-center justify-center shadow-2xl active:scale-90 transition-transform"
+                                        className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-2xl active:scale-95 transition-transform"
                                     >
-                                        <div className="w-[72px] h-[72px] rounded-full border-2 border-black/10 bg-white" />
+                                        <div className="w-14 h-14 rounded-full border-2 border-black/10" />
                                     </button>
-                                    <p className="mt-4 text-white text-sm font-bold tracking-wider uppercase opacity-80">Capture Photo</p>
                                 </div>
 
                                 <button
@@ -225,6 +221,13 @@ export default function Dashboard() {
                                     <CheckCircle2 className="w-6 h-6 rotate-45" />
                                 </button>
                             </div>
+                            <Button
+                                variant="ghost"
+                                onClick={() => setStatus('idle')}
+                                className="w-full py-4 text-neutral-400 font-bold"
+                            >
+                                Cancel
+                            </Button>
                         </motion.div>
                     )}
 
@@ -239,52 +242,52 @@ export default function Dashboard() {
                                 <Image src={image} alt="Captured" fill className="object-cover" />
                                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-black/20" />
 
-                                <div className="absolute bottom-6 left-6 right-6 p-5 rounded-2xl bg-black/40 backdrop-blur-md border border-white/10">
+                                <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-black/40 backdrop-blur-md border border-white/10">
                                     <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center">
-                                            <MapPin className="text-indigo-400 w-5 h-5" />
+                                        <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
+                                            <CheckCircle2 className="w-4 h-4 text-green-400" />
                                         </div>
                                         <div>
-                                            <p className="text-[10px] text-neutral-400 uppercase tracking-widest font-bold">Current Location</p>
-                                            <p className="text-sm font-medium text-white truncate max-w-[200px]">{location?.address}</p>
+                                            <p className="text-[10px] text-neutral-400 uppercase tracking-widest font-bold">Location Verified</p>
+                                            <p className="text-xs font-bold text-white truncate max-w-[180px]">{location?.address}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="space-y-4">
-                                <p className="text-sm font-bold text-neutral-500 uppercase tracking-widest px-1">Select Status Type</p>
+                                <label className="text-xs font-black text-neutral-500 uppercase tracking-widest px-1">Select Activity Type</label>
                                 <div className="grid grid-cols-2 gap-3">
                                     {attendanceTypes.map((type) => (
                                         <button
                                             key={type.id}
                                             onClick={() => setSelectedType(type.id)}
-                                            className={`flex items-center gap-3 px-4 py-4 rounded-2xl border transition-all duration-300 ${selectedType === type.id
-                                                ? 'bg-indigo-600 border-indigo-500 text-white shadow-lg shadow-indigo-600/20 ring-2 ring-indigo-600/20'
-                                                : 'bg-neutral-900 border-white/5 text-neutral-400 hover:border-neutral-700'
+                                            className={`p-4 rounded-2xl border transition-all flex flex-col items-center gap-2 ${selectedType === type.id
+                                                ? "bg-indigo-600 border-indigo-500 shadow-lg shadow-indigo-600/20"
+                                                : "bg-neutral-900 border-white/5 text-neutral-500 hover:border-white/10"
                                                 }`}
                                         >
-                                            <type.icon className={`w-5 h-5 ${selectedType === type.id ? 'text-white' : 'text-neutral-500'}`} />
-                                            <span className="text-sm font-bold">{type.label}</span>
+                                            <type.icon className={`w-5 h-5 ${selectedType === type.id ? "text-white" : "text-neutral-500"}`} />
+                                            <span className={`text-[10px] font-bold uppercase tracking-widest ${selectedType === type.id ? "text-white" : "text-neutral-500"}`}>{type.label}</span>
                                         </button>
                                     ))}
                                 </div>
                             </div>
 
-                            <div className="flex gap-4">
+                            <div className="flex flex-col gap-3">
                                 <Button
-                                    onClick={() => setStatus('idle')}
-                                    variant="ghost"
-                                    className="flex-1 h-16 rounded-2xl bg-neutral-900 text-white hover:bg-neutral-800"
+                                    disabled={loading}
+                                    onClick={submit}
+                                    className="w-full py-5 bg-white text-black rounded-2xl font-black uppercase tracking-widest hover:bg-neutral-200 transition-colors"
                                 >
-                                    Retake
+                                    {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : "Confirm Attendance"}
                                 </Button>
                                 <Button
-                                    onClick={submit}
-                                    isLoading={loading}
-                                    className="flex-1 h-16 rounded-2xl bg-white text-black hover:bg-neutral-200"
+                                    variant="ghost"
+                                    onClick={() => setStatus('capturing')}
+                                    className="w-full py-4 text-neutral-500 font-bold text-sm"
                                 >
-                                    Submit
+                                    Retake Photo
                                 </Button>
                             </div>
                         </motion.div>

@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { Phone, Mail, Lock, ShieldCheck, MapPin, ArrowRight, Loader2 } from "lucide-react";
+import { Phone, Mail, Lock, ShieldCheck, MapPin, ArrowRight, Loader2, Truck } from "lucide-react";
 import Image from "next/image";
 
 export default function LoginPage() {
@@ -61,7 +61,7 @@ export default function LoginPage() {
 
                 <Link href="/" className="relative z-10 flex items-center gap-3">
                     <div className="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-2xl shadow-indigo-600/30">
-                        <MapPin className="text-white w-7 h-7" />
+                        <Truck className="text-white w-7 h-7" />
                     </div>
                     <span className="text-3xl font-bold tracking-tighter text-white">
                         Track<span className="text-indigo-500">Pro</span>
@@ -79,7 +79,7 @@ export default function LoginPage() {
                             <span className="text-indigo-500">Fleet Operations</span> <br />
                             with Confidence.
                         </h1>
-                        <p className="mt-8 text-xl text-neutral-400 max-w-lg leading-relaxed">
+                        <p className="mt-8 text-lg lg:text-xl text-neutral-400 max-w-lg leading-relaxed">
                             A unified platform for real-time tracking, seamless attendance, and comprehensive fleet management.
                         </p>
                     </motion.div>
@@ -107,16 +107,16 @@ export default function LoginPage() {
             <div className="flex-1 flex items-center justify-center p-6 md:p-12 lg:p-20 relative bg-[#0a0a0a]">
                 <div className="w-full max-w-sm space-y-10 relative z-10">
                     <div className="space-y-4 text-center md:text-left">
-                        <h2 className="text-4xl font-bold text-white tracking-tight">Login</h2>
-                        <p className="text-neutral-500 text-lg">Choose your access type to continue.</p>
+                        <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">Login</h2>
+                        <p className="text-neutral-500 text-base md:text-lg">Choose your access type to continue.</p>
                     </div>
 
                     <div className="flex p-1.5 bg-neutral-900 rounded-[1.25rem] border border-white/5 shadow-inner">
                         <button
                             onClick={() => setLoginType("member")}
                             className={`flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-300 ${loginType === "member"
-                                    ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/20"
-                                    : "text-neutral-500 hover:text-white"
+                                ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/20"
+                                : "text-neutral-500 hover:text-white"
                                 }`}
                         >
                             Member Access
@@ -124,8 +124,8 @@ export default function LoginPage() {
                         <button
                             onClick={() => setLoginType("admin")}
                             className={`flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-300 ${loginType === "admin"
-                                    ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/20"
-                                    : "text-neutral-500 hover:text-white"
+                                ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/20"
+                                : "text-neutral-500 hover:text-white"
                                 }`}
                         >
                             Admin Portal

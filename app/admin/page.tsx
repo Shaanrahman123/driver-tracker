@@ -81,64 +81,64 @@ export default function AdminDashboard() {
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white">Live Operations</h1>
-                    <p className="text-neutral-400 mt-2">Managing your fleet's real-time activities.</p>
+                    <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-white">Live Operations</h1>
+                    <p className="text-xs md:text-sm text-neutral-400 mt-1">Managing your fleet's real-time activities.</p>
                 </div>
-                <div className="flex items-center gap-3 bg-neutral-900 px-5 py-3 rounded-2xl border border-white/5 shadow-xl">
-                    <Calendar className="w-5 h-5 text-indigo-500" />
-                    <span className="text-white font-bold">{formatDate(new Date().toISOString())}</span>
+                <div className="flex items-center gap-2 bg-neutral-900 px-4 py-2.5 rounded-xl border border-white/5 shadow-xl w-fit">
+                    <Calendar className="w-4 h-4 text-indigo-500" />
+                    <span className="text-white text-sm font-bold">{formatDate(new Date().toISOString())}</span>
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {stats.map((stat, i) => (
-                    <div key={i} className="bg-neutral-900/50 border border-white/5 rounded-[2.5rem] p-8 hover:bg-neutral-900 transition-all group relative overflow-hidden">
-                        <div className={`absolute top-0 right-0 w-32 h-32 ${stat.bg} blur-[60px] rounded-full opacity-20 -mr-16 -mt-16`} />
+                    <div key={i} className="bg-neutral-900/50 border border-white/5 rounded-3xl p-5 md:p-8 hover:bg-neutral-900 transition-all group relative overflow-hidden">
+                        <div className={`absolute top-0 right-0 w-24 md:w-32 h-24 md:h-32 ${stat.bg} blur-[60px] rounded-full opacity-20 -mr-12 -mt-12`} />
                         <div className="flex items-center justify-between relative z-10">
-                            <div className={`p-4 rounded-2xl ${stat.bg} ${stat.color} group-hover:scale-110 transition-transform duration-500 shadow-lg`}>
-                                <stat.icon className="w-7 h-7" />
+                            <div className={`p-3 md:p-4 rounded-xl md:rounded-2xl ${stat.bg} ${stat.color} group-hover:scale-110 transition-transform duration-500 shadow-lg`}>
+                                <stat.icon className="w-5 h-5 md:w-7 md:h-7" />
                             </div>
                         </div>
-                        <div className="mt-8 relative z-10">
-                            <p className="text-neutral-500 text-sm font-bold uppercase tracking-widest">{stat.label}</p>
-                            <h3 className="text-4xl font-bold mt-2 text-white">{stat.value}</h3>
+                        <div className="mt-4 md:mt-8 relative z-10">
+                            <p className="text-neutral-500 text-[10px] md:text-sm font-bold uppercase tracking-widest">{stat.label}</p>
+                            <h3 className="text-2xl md:text-4xl font-bold mt-1 text-white">{stat.value}</h3>
                         </div>
                     </div>
                 ))}
             </div>
 
-            <div className="bg-neutral-900/50 border border-white/5 rounded-[2.5rem] overflow-hidden shadow-2xl">
-                <div className="p-8 border-b border-white/5 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div className="bg-neutral-900/50 border border-white/5 rounded-3xl md:rounded-[2.5rem] overflow-hidden shadow-2xl">
+                <div className="p-5 md:p-8 border-b border-white/5 flex flex-col lg:flex-row lg:items-center justify-between gap-4 md:gap-6">
                     <div>
-                        <h2 className="text-2xl font-bold text-white mb-1">Today's Attendance Logs</h2>
-                        <p className="text-sm text-neutral-500">Real-time update from drivers on the field.</p>
+                        <h2 className="text-xl md:text-2xl font-bold text-white mb-1">Today's Logs</h2>
+                        <p className="text-xs text-neutral-500">Real-time update from drivers.</p>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row gap-4">
+                    <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
                         {/* Type Filter */}
                         <div className="relative group">
-                            <Filter className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-500" />
+                            <Filter className="absolute left-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-neutral-500" />
                             <select
                                 value={typeFilter}
                                 onChange={(e) => setTypeFilter(e.target.value)}
-                                className="pl-11 pr-10 py-3 bg-neutral-950 border border-white/5 rounded-2xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm font-bold text-white appearance-none cursor-pointer hover:border-white/10 transition-all shadow-lg"
+                                className="pl-10 pr-9 py-2.5 bg-neutral-950 border border-white/5 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-[13px] font-bold text-white appearance-none cursor-pointer hover:border-white/10 transition-all shadow-lg"
                             >
                                 {attendanceTypes.map(type => (
                                     <option key={type.id} value={type.id}>{type.label}</option>
                                 ))}
                             </select>
-                            <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-500 pointer-events-none" />
+                            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-neutral-500 pointer-events-none" />
                         </div>
 
                         {/* Search */}
                         <div className="relative">
-                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-500" />
+                            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-neutral-500" />
                             <input
                                 type="text"
                                 placeholder="Search driver..."
                                 value={search}
                                 onChange={(e) => setSearch(e.target.value)}
-                                className="pl-11 pr-4 py-3 bg-neutral-950 border border-white/5 rounded-2xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm font-bold text-white placeholder:text-neutral-600 w-full sm:w-64 shadow-lg transition-all"
+                                className="pl-10 pr-4 py-2.5 bg-neutral-950 border border-white/5 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-[13px] font-bold text-white placeholder:text-neutral-600 w-full sm:w-56 shadow-lg transition-all"
                             />
                         </div>
                     </div>
@@ -211,7 +211,7 @@ export default function AdminDashboard() {
                                         <td className="px-8 py-6">
                                             <div className="h-14 w-20 relative rounded-xl overflow-hidden border border-white/5 bg-neutral-800 shadow-xl">
                                                 {log.image ? (
-                                                    <Image src={log.image} alt="Log evidence" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                                                    <Image src={log.image} alt="Activity" fill unoptimized className="object-cover group-hover:scale-110 transition-transform duration-500" />
                                                 ) : (
                                                     <div className="flex items-center justify-center h-full text-[10px] text-neutral-600 font-bold tracking-tighter">N/A</div>
                                                 )}
