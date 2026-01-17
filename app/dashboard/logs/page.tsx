@@ -233,30 +233,30 @@ export default function DriverLogs() {
                 </div>
             </header>
 
-            <main className="pt-24 pb-32 px-4 md:px-6 max-w-4xl mx-auto">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+            <main className="pt-28 pb-32 px-6 max-w-4xl mx-auto">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
                     {/* Month Selector */}
-                    <div className="flex items-center gap-2 bg-neutral-900/50 border border-white/5 p-1.5 rounded-xl w-fit">
-                        <button onClick={() => changeMonth(-1)} className="p-1.5 hover:bg-white/5 rounded-lg transition-colors">
-                            <ChevronLeft className="w-4 h-4 text-neutral-400" />
+                    <div className="flex items-center gap-4 bg-neutral-900/50 border border-white/5 p-2 rounded-2xl w-fit">
+                        <button onClick={() => changeMonth(-1)} className="p-2 hover:bg-white/5 rounded-xl transition-colors">
+                            <ChevronLeft className="w-5 h-5 text-neutral-400" />
                         </button>
-                        <div className="flex items-center gap-1.5 px-1">
-                            <CalendarIcon className="w-3.5 h-3.5 text-indigo-500" />
-                            <span className="font-bold text-[13px] min-w-[110px] text-center">{formatMonth(currentMonth)}</span>
+                        <div className="flex items-center gap-2 px-2">
+                            <CalendarIcon className="w-4 h-4 text-indigo-500" />
+                            <span className="font-bold text-sm min-w-[120px] text-center">{formatMonth(currentMonth)}</span>
                         </div>
-                        <button onClick={() => changeMonth(1)} className="p-1.5 hover:bg-white/5 rounded-lg transition-colors">
-                            <ChevronRight className="w-4 h-4 text-neutral-400" />
+                        <button onClick={() => changeMonth(1)} className="p-2 hover:bg-white/5 rounded-xl transition-colors">
+                            <ChevronRight className="w-5 h-5 text-neutral-400" />
                         </button>
                     </div>
 
                     {/* Filter Type */}
-                    <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar md:pb-0">
-                        <Filter className="w-3.5 h-3.5 text-neutral-500 mr-1 shrink-0" />
+                    <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar md:pb-0">
+                        <Filter className="w-4 h-4 text-neutral-500 mr-2 shrink-0" />
                         <select
                             value={filterType}
                             onChange={(e) => setFilterType(e.target.value)}
-                            className="bg-neutral-900 border border-white/5 rounded-lg px-3 py-2 text-[13px] font-bold focus:ring-2 focus:ring-indigo-500 outline-none appearance-none cursor-pointer pr-8 relative"
-                            style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23666\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'/%3E%3C/svg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 10px center', backgroundSize: '14px' }}
+                            className="bg-neutral-900 border border-white/5 rounded-xl px-4 py-2.5 text-sm font-bold focus:ring-2 focus:ring-indigo-500 outline-none appearance-none cursor-pointer pr-10 relative"
+                            style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23666\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'/%3E%3C/svg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center', backgroundSize: '16px' }}
                         >
                             {attendanceTypes.map(type => (
                                 <option key={type.id} value={type.id}>{type.label}</option>
@@ -265,16 +265,16 @@ export default function DriverLogs() {
                     </div>
                 </div>
 
-                <div className="bg-neutral-900/50 border border-white/5 rounded-2xl md:rounded-[2.5rem] overflow-hidden shadow-2xl">
+                <div className="bg-neutral-900/50 border border-white/5 rounded-[2.5rem] overflow-hidden shadow-2xl">
                     {isLoading ? (
-                        <div className="py-24 flex flex-col items-center justify-center gap-3 text-neutral-500">
-                            <Loader2 className="w-8 h-8 animate-spin text-indigo-500" />
-                            <p className="font-bold tracking-widest uppercase text-[10px]">Loading records...</p>
+                        <div className="py-32 flex flex-col items-center justify-center gap-4 text-neutral-500">
+                            <Loader2 className="w-10 h-10 animate-spin text-indigo-500" />
+                            <p className="font-medium tracking-widest uppercase text-xs">Loading records...</p>
                         </div>
                     ) : filteredLogs.length === 0 && (filterType !== 'clock_in' && filterType !== 'clock_out') ? (
-                        <div className="py-24 flex flex-col items-center justify-center gap-3 text-neutral-500">
-                            <ClipboardList className="w-10 h-10 text-neutral-800" />
-                            <p className="font-bold tracking-widest uppercase text-[10px]">No records found.</p>
+                        <div className="py-32 flex flex-col items-center justify-center gap-4 text-neutral-500">
+                            <ClipboardList className="w-12 h-12 text-neutral-800" />
+                            <p className="font-medium tracking-widest uppercase text-xs">No records found for this period.</p>
                         </div>
                     ) : (renderTable())}
                 </div>

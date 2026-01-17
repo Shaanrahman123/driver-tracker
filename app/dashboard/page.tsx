@@ -120,7 +120,7 @@ export default function Dashboard() {
 
     const handleLogout = async () => {
         await fetch('/api/auth/logout', { method: 'POST' });
-        router.push('/login');
+        window.location.href = '/login';
     };
 
     return (
@@ -143,7 +143,7 @@ export default function Dashboard() {
                 </div>
             </header>
 
-            <main className="pt-28 pb-32 px-6 max-w-lg mx-auto">
+            <main className="pt-28 pb-32 px-6 max-w-xl md:max-w-2xl mx-auto">
                 <AnimatePresence mode="wait">
                     {status === 'idle' && (
                         <motion.div
@@ -153,14 +153,14 @@ export default function Dashboard() {
                             exit={{ opacity: 0, scale: 0.95 }}
                             className="space-y-8"
                         >
-                            <div className="relative p-8 rounded-[2.5rem] bg-indigo-600/10 border border-indigo-500/20 overflow-hidden group">
+                            <div className="relative p-8 md:p-12 rounded-[2.5rem] bg-indigo-600/10 border border-indigo-500/20 overflow-hidden group">
                                 <div className="absolute -top-24 -right-24 w-48 h-48 bg-indigo-500/20 blur-[80px] rounded-full" />
                                 <div className="relative z-10 flex flex-col items-center text-center">
-                                    <div className="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-2xl shadow-indigo-600/40 mb-6 group-hover:scale-110 transition-transform duration-500">
-                                        <Camera className="w-8 h-8 text-white" />
+                                    <div className="w-16 h-16 md:w-20 md:h-20 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-2xl shadow-indigo-600/40 mb-6 md:mb-8 group-hover:scale-110 transition-transform duration-500">
+                                        <Camera className="w-8 h-8 md:w-10 md:h-10 text-white" />
                                     </div>
-                                    <h2 className="text-2xl font-bold mb-2">Ready to Go?</h2>
-                                    <p className="text-neutral-400 text-sm mb-8 leading-relaxed">Capture your presence and share your status with the team instantly.</p>
+                                    <h2 className="text-2xl md:text-4xl font-bold mb-2 md:mb-4">Ready to Go?</h2>
+                                    <p className="text-neutral-400 text-sm md:text-lg mb-8 md:mb-12 leading-relaxed">Capture your presence and share your status with the team instantly.</p>
                                     <Button
                                         onClick={startCamera}
                                         className="w-full h-16 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-lg font-bold shadow-xl shadow-indigo-600/20 group"
@@ -178,13 +178,13 @@ export default function Dashboard() {
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
-                                <div className="p-5 rounded-[2rem] bg-neutral-900/50 border border-white/5">
+                                <div className="p-6 rounded-[2rem] bg-neutral-900/50 border border-white/5">
                                     <div className="text-xs font-black text-neutral-500 uppercase tracking-widest mb-1">Today</div>
-                                    <div className="text-base md:text-xl font-bold">12 Jan</div>
+                                    <div className="text-xl md:text-2xl font-bold">{new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short' })}</div>
                                 </div>
-                                <div className="p-5 rounded-[2rem] bg-neutral-900/50 border border-white/5">
+                                <div className="p-6 rounded-[2rem] bg-neutral-900/50 border border-white/5">
                                     <div className="text-xs font-black text-neutral-500 uppercase tracking-widest mb-1">Status</div>
-                                    <div className="text-base md:text-xl font-bold text-green-400 italic">ON DUTY</div>
+                                    <div className="text-xl md:text-2xl font-bold text-green-400 italic">ON DUTY</div>
                                 </div>
                             </div>
                         </motion.div>

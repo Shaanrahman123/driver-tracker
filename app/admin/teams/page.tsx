@@ -134,27 +134,27 @@ export default function TeamsPage() {
         <div className="space-y-8 animate-in fade-in duration-500">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-white">Teams Management</h1>
-                    <p className="text-xs md:text-sm text-neutral-400 mt-1">Manage your fleet drivers and team members.</p>
+                    <h1 className="text-3xl font-bold tracking-tight">Teams Management</h1>
+                    <p className="text-neutral-400 mt-2">Manage your fleet drivers and team members.</p>
                 </div>
                 <Button
                     onClick={() => handleOpenModal()}
-                    className="bg-indigo-600 hover:bg-indigo-700 h-10 md:h-11 px-5 rounded-xl flex items-center gap-2 w-fit text-sm"
+                    className="bg-indigo-600 hover:bg-indigo-700 h-11 px-6 rounded-xl flex items-center gap-2"
                 >
-                    <Plus className="w-4 h-4" />
+                    <Plus className="w-5 h-5" />
                     Add Member
                 </Button>
             </div>
 
             <div className="flex flex-col md:flex-row gap-4">
                 <div className="relative flex-1">
-                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-500" />
+                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-neutral-500" />
                     <input
                         type="text"
                         placeholder="Search by name, phone or email..."
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        className="w-full pl-11 pr-4 py-2.5 bg-neutral-900 border border-white/5 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition-all placeholder:text-neutral-600 text-sm"
+                        className="w-full pl-12 pr-4 py-3 bg-neutral-900 border border-white/5 rounded-2xl focus:ring-2 focus:ring-indigo-500 outline-none transition-all placeholder:text-neutral-600"
                     />
                 </div>
             </div>
